@@ -78,6 +78,7 @@ class test_method_PrefixTrieConstruction(unittest.TestCase):
         val = trie_methods.trie_equivalence(trie, expected)
         self.assertTrue(val)
 
+
 class test_method_incorporate(unittest.TestCase):
     # Input: text, trie. Output: trie
     # Assuming text and trie are valid and correct:
@@ -94,7 +95,7 @@ class test_method_incorporate(unittest.TestCase):
 
         expected = graph.Graph()
         expected = trie_builder.incorporate(pattern, expected)
-        
+
         val = trie_methods.trie_equivalence(trie, expected)
         self.assertTrue(val)
 
@@ -128,6 +129,7 @@ class test_method_is_prefix(unittest.TestCase):
         trie = trie_builder.PrefixTrieConstruction(patterns)
         val = trie_builder.is_prefix(text, trie)
         self.assertTrue(val)
+
     def test_false(self):
         text = 'ccca'
         patterns = ['ca', 'gt']
@@ -146,4 +148,4 @@ class test_method_match_loc(unittest.TestCase):
         self.assertEqual(val, [1, 2])
 
 if __name__ == '__main__':
-    unittest.main(verbosity = 2)
+    unittest.main(verbosity=2)

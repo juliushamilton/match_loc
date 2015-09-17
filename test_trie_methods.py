@@ -3,6 +3,7 @@ import trie_methods
 import graph
 import trie_builder
 
+
 class test_method_is_gen(unittest.TestCase):
     # Input: string. Output: true / false
     # Cases: not a string : type error
@@ -24,12 +25,14 @@ class test_method_is_gen(unittest.TestCase):
         val = trie_methods.is_gen(s)
         self.assertFalse(val)
 
+
 class test_method_name(unittest.TestCase):
-    #Output: random string of six characters
+    # Output: random string of six characters
     def test_normal(self):
         s = trie_methods.name()
         self.assertIsInstance(s, str)
         self.assertEqual(len(s), 6)
+
 
 class test_method_edge_exists(unittest.TestCase):
     # input: s, x, trie; output: true/false
@@ -56,6 +59,7 @@ class test_method_edge_exists(unittest.TestCase):
         val = trie_methods.edge_exists(s, x, trie)
         self.assertFalse(val)
 
+
 class test_method_select(unittest.TestCase):
     def test_method_normal(self):
         s = 'c'
@@ -73,6 +77,7 @@ class test_method_select(unittest.TestCase):
         e = trie_methods.select(s, x, trie)
         self.assertEqual(e, 'g')
 
+
 class test_method_root(unittest.TestCase):
     # Input: trie Output: node
     # Cases where this could go wrong?
@@ -89,11 +94,13 @@ class test_method_root(unittest.TestCase):
         trie.edge('i', 'C', 'E', 'g')
         r = trie_methods.root(trie)
         self.assertEqual(r, 'A')
+
     def test_single_node(self):
         trie = graph.Graph()
         trie.node('A')
         r = trie_methods.root(trie)
         self.assertEqual(r, 'A')
+
     def test_empty_trie(self):
         trie = graph.Graph()
         with self.assertRaises(ValueError):
@@ -105,8 +112,6 @@ class test_method_root(unittest.TestCase):
             trie_methods.root(trie)
 
 
-
-
 class test_method_trie_equivalence(unittest.TestCase):
     # Input: trie1, trie2. Output: true / false
     def test_normal(self):
@@ -116,6 +121,7 @@ class test_method_trie_equivalence(unittest.TestCase):
         tr2 = trie_builder.PrefixTrieConstruction(p2)
         val = trie_methods.trie_equivalence(tr1, tr2)
         self.assertTrue(val)
+
 
 class test_method_num_leaves(unittest.TestCase):
     # input: trie. output: int
@@ -171,6 +177,7 @@ class test_method_arrived(unittest.TestCase):
         val = trie_methods.arrived(x, trie)
         self.assertFalse(val)
 
+
 class test_method_num_edges(unittest.TestCase):
     def test_normal(self):
         trie = graph.Graph()
@@ -185,4 +192,4 @@ class test_method_num_edges(unittest.TestCase):
 
 
 if __name__ == '__main__':
-    unittest.main(verbosity = 2)
+    unittest.main(verbosity=2)

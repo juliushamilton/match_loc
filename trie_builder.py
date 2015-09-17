@@ -1,18 +1,19 @@
-import fasta
 import trie_methods
 import graph
+
 
 def PrefixTrieConstruction(patterns):
 
     # This constructs a kind of graph for the list of patterns called
     # a prefix trie. Each symbol of each pattern is represented as an
-    # edge on the graph, in the order they occur. Walking from the root node to a leaf spells out
+    # edge on the graph, in the order they occur.
+    # Walking from the root node to a leaf spells out
     # one of the patterns.
 
     if not isinstance(patterns, list):
-	    raise TypeError(
-	        'ERROR: PrefixTrieConstruction requires'
-	        ' a list of strings.')
+        raise TypeError(
+            'ERROR: PrefixTrieConstruction requires'
+            ' a list of strings.')
     elif patterns == []:
         raise ValueError(
             'ERROR: PrefixTrieConstruction requires'
@@ -48,7 +49,8 @@ def incorporate(pattern, trie):
             x = trie.cod[f]
         else:
 
-            # if there is not an existing edge, create an edge with the current symbol.
+            # if there is not an existing edge,
+            # create an edge with the current symbol.
             y = trie_methods.name()
             trie.node(y)
             e = trie_methods.name()
@@ -61,7 +63,8 @@ def incorporate(pattern, trie):
 
 def is_prefix(text, trie):
 
-    # is_prefix determines whether a given text, starting from the text's first character, matches a branch of
+    # is_prefix determines whether a given text, starting from the text's
+    # first character, matches a branch of
     # the given trie, and is thus one of the patterns from which
     # the trie was constructed.
 
@@ -72,24 +75,29 @@ def is_prefix(text, trie):
         # set the current node to the root of the trie.
         x = trie_methods.root(trie)
 
-        # add an extra space at the end of the text to ensure the algorithm 
+        # add an extra space at the end of the text to ensure the algorithm
         # runs to completion and identifies when it has arrived at a leaf.
         text = text + ' '
 
         # iterate through the symbols in the text.
         for s in text:
-            # if the current node has arrived at a leaf, then a pattern matches this text.
+            # if the current node has arrived at a leaf,
+            # then a pattern matches this text.
             if trie_methods.arrived(x, trie):
                 return True
 
-            # if the current node has not arrived at a leaf, but an edge exists matching
-            # the current symbol, select that edge and travel to that edge's codomain.
+            # if the current node has not arrived at a leaf,
+            # but an edge exists matching
+            # the current symbol, select that edge and travel to
+            # that edge's codomain.
             elif trie_methods.edge_exists(s, x, trie):
                 e = trie_methods.select(s, x, trie)
                 x = trie.cod[e]
             else:
-                # if no such edge exists, the current text does not match any pattern.
+                # if no such edge exists, the current text
+                # does not match any pattern.
                 return False
+
 
 def match_loc(text, trie):
 

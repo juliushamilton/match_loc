@@ -2,6 +2,7 @@ import unittest
 import graph
 import trie_methods
 
+
 class test_method__init__(unittest.TestCase):
     def test_normal(self):
         trie = graph.Graph()
@@ -10,6 +11,7 @@ class test_method__init__(unittest.TestCase):
         self.assertEqual(trie.dom, {})
         self.assertEqual(trie.cod, {})
         self.assertEqual(trie.sym, {})
+
 
 class test_method_node(unittest.TestCase):
     # Input: string. Result: appends to O.
@@ -39,7 +41,6 @@ class test_method_node(unittest.TestCase):
         trie.node(n)
         self.assertIn(n, trie.O)
 
-       # How to test if given multiple arguments returns error?
 
 class test_method_edge(unittest.TestCase):
     # Input: string. Result: appends to A, dom, cod, sym.
@@ -84,7 +85,7 @@ class test_method_edge(unittest.TestCase):
         trie.node('B')
         trie.edge('f', 'A', 'B', 'a')
         self.assertIn('f', trie.A)
-        self.assertTrue(trie.dom['f'] =='A')
+        self.assertTrue(trie.dom['f'] == 'A')
         self.assertTrue(trie.cod['f'] == 'B')
         self.assertTrue(trie.sym['f'] == 'a')
 
@@ -95,9 +96,9 @@ class test_method_edge(unittest.TestCase):
         f = trie_methods.name()
         trie.edge(f, 'A', 'B', 't')
         self.assertIn(f, trie.A)
-        self.assertTrue(trie.dom[f] =='A')
+        self.assertTrue(trie.dom[f] == 'A')
         self.assertTrue(trie.cod[f] == 'B')
         self.assertTrue(trie.sym[f] == 't')
 
 if __name__ == '__main__':
-    unittest.main(verbosity = 2)
+    unittest.main(verbosity=2)

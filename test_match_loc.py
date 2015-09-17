@@ -3,6 +3,7 @@ import match_loc
 import sys
 import fasta
 
+
 class test_method_parse(unittest.TestCase):
     # Input: commands line args. Output: text, patterns
 
@@ -36,6 +37,7 @@ class test_method_parse(unittest.TestCase):
         self.assertEqual(text, t1)
         self.assertEqual(patterns, [t2, t3, t4])
 
+
 class test_method_main(unittest.TestCase):
     def test_normal(self):
         t1 = 'cgtcga'
@@ -48,4 +50,4 @@ class test_method_main(unittest.TestCase):
 
 
 if __name__ == '__main__':
-    unittest.main(verbosity = 2)
+    unittest.main(verbosity=2)

@@ -3,6 +3,7 @@ import sys
 import fasta
 import trie_builder
 
+
 def parse():
 
     # parse parses command line arguments and ensures
@@ -13,7 +14,7 @@ def parse():
             raise ValueError(
                 'ERROR: arguments must be dna sequences'
                 'or fasta files.')
-    else: 
+    else:
         parser = argparse.ArgumentParser(
             description='Takes a series of patterns as fasta files'
             ' or strings and a text as fasta file or string and'
@@ -26,6 +27,7 @@ def parse():
         patterns = fasta.convert_to_text(args.patterns)
 
         return text, patterns
+
 
 def main():
 
@@ -41,5 +43,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-    
-

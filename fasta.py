@@ -5,11 +5,12 @@ def is_fasta(name):
     if not isinstance(name, str):
         raise TypeError('ERROR: is_fasta requires string inpute.')
     elif len(name) <= 10:
-    	return False
+        return False
     elif name[-10:] == '.fasta.txt':
         return True
     else:
         return False
+
 
 def open_fasta(file_name):
 
@@ -29,13 +30,14 @@ def open_fasta(file_name):
         text = "".join(lines)
         return text
 
+
 def make_sample_fasta(file_name, text):
 
     # make_sample_fasta make a model fasta file for texting,
     # saved under the name file_name, containing text as the body
 
     if not isinstance(file_name, str):
-	    raise TypeError('ERROR: filename must be a string.')
+        raise TypeError('ERROR: filename must be a string.')
     elif not isinstance(text, str):
         raise TypeError('ERROR: text must be a string.')
     elif not is_fasta(file_name):
@@ -45,9 +47,11 @@ def make_sample_fasta(file_name, text):
         f.write('xxxxxxxxx\n' + text)
         f.close()
 
+
 def convert_to_text(i):
 
-    # convert_to_text converts a fasta file into its text, or a list of fasta files and strings
+    # convert_to_text converts a fasta file into its text,
+    # or a list of fasta files and strings
     # into a list of texts.
 
     if not (isinstance(i, list) or isinstance(i, str)):

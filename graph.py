@@ -1,5 +1,6 @@
 import trie_methods
 
+
 class Graph():
 
     # A trie consists of a set of objects (nodes) and a set of arrows (edges),
@@ -29,12 +30,12 @@ class Graph():
         # edge creates a new edge on the trie.
 
         if not (
-         isinstance(f, str) and isinstance(a, str)
-         and isinstance(b, str) and isinstance(s, str)):
+                isinstance(f, str) and isinstance(a, str)
+                and isinstance(b, str) and isinstance(s, str)):
             raise TypeError('ERROR: Edge requires string arguments.')
 
         elif f in self.A:
-             raise ValueError('ERROR: Edge name already taken.')
+            raise ValueError('ERROR: Edge name already taken.')
 
         elif not trie_methods.is_gen(s):
             raise ValueError('ERROR: Edge requires a dna char for symbol.')

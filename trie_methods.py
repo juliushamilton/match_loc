@@ -2,6 +2,7 @@ import string
 import random
 import graph
 
+
 def is_gen(s):
 
     # If s is a dna sequence, is_gen returns True.
@@ -11,7 +12,7 @@ def is_gen(s):
     else:
         gen = {'a', 'g', 't', 'c'}
         for c in s:
-            if not c in gen:
+            if c not in gen:
                 return False
         else:
             return True
@@ -22,6 +23,7 @@ def name(size=6, chars=string.ascii_uppercase + string.digits):
     # name returns a random name of six characters.
 
     return ''.join(random.choice(chars) for _ in range(size))
+
 
 def root(trie):
 
@@ -45,6 +47,7 @@ def select(s, x, trie):
             f = e
     return f
 
+
 def edge_exists(s, x, trie):
 
     # edge_exists determines whether an edge f, whose domain is x, matching
@@ -56,12 +59,12 @@ def edge_exists(s, x, trie):
     else:
         return False
 
+
 def trie_equivalence(trie1, trie2):
 
     # this is a very weak measure of equivalence which relies on the fact
     # that the number of edges and leaves in tries of identical structure
     # are equivalent.
-
 
     if num_edges(trie1) == num_edges(trie2):
         if num_leaves(trie1) == num_leaves(trie2):
@@ -79,8 +82,10 @@ def arrived(x, trie):
     else:
         return False
 
+
 def num_edges(trie):
     return len(trie.A)
+
 
 def num_leaves(trie):
 

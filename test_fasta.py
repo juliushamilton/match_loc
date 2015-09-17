@@ -24,22 +24,25 @@ class test_method_is_fasta(unittest.TestCase):
         name = 'aaaaaaaaaaaaaaaaaaaaaaaa'
         val = fasta.is_fasta(name)
         self.assertEqual(val, False)
-        
+
     def test_normal(self):
         name = 'spirulina.fasta.txt'
         val = fasta.is_fasta(name)
         self.assertEqual(val, True)
 
+
 class test_method_open_fasta(unittest.TestCase):
-	# Input: fasta filename. Output: the text within.
+    # Input: fasta filename. Output: the text within.
     def test_not_string(self):
         file_name = None
         with self.assertRaises(TypeError):
             fasta.open_fasta(file_name)
+
     def test_not_fasta(self):
         file_name = 'tacgtgacggg'
         with self.assertRaises(ValueError):
             fasta.open_fasta(file_name)
+
     def test_normal(self):
         file_name = 'spirulina_ribosome.fasta.txt'
         text = 'ccgccgtagattt'
@@ -47,6 +50,7 @@ class test_method_open_fasta(unittest.TestCase):
 
         val = fasta.open_fasta(file_name)
         self.assertEqual(val, text)
+
 
 class test_method_make_sample_fasta(unittest.TestCase):
     def test_wrong_name(self):
@@ -71,19 +75,21 @@ class test_method_make_sample_fasta(unittest.TestCase):
         file_name = 'spirulina_ribosome.fasta.txt'
         text = 'cgtgatcgatcgttactac'
 
-        val = fasta.make_sample_fasta(file_name, text)
+        fasta.make_sample_fasta(file_name, text)
 
         self.assertEqual(fasta.open_fasta(file_name), text)
 
+
 class test_method_convert_to_text(unittest.TestCase):
-	# Takes a list of strings and fasta filenames
-	# or a single string or fasta filename
-	# and returns with fasta filenames replaced with
-	# their texts.
+    # Takes a list of strings and fasta filenames
+    # or a single string or fasta filename
+    # and returns with fasta filenames replaced with
+    # their texts.
     def test_wrong_input(self):
         input = None
         with self.assertRaises(TypeError):
             fasta.convert_to_text(input)
+
     def test_string(self):
         input = 'cgtgaggcgtattt'
         val = fasta.convert_to_text(input)
@@ -108,6 +114,7 @@ class test_method_convert_to_text(unittest.TestCase):
 
         val = fasta.convert_to_text(l)
         self.assertEqual(val, [text_1, text_2, 'aaa'])
+
 
 class test_method_is_gen(unittest.TestCase):
     def test_not(self):
