@@ -26,7 +26,8 @@ class Graph():
             self.O.append(x)
 
     def edge(self, f, a, b, s):
-
+        
+        print('Symbol: ', s)
         # edge creates a new edge on the trie.
 
         if not (

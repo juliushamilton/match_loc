@@ -1,6 +1,7 @@
 import unittest
 import fasta
-import match_loc.py
+import match_loc
+import trie_methods
 
 
 class test_method_is_fasta(unittest.TestCase):
@@ -45,17 +46,25 @@ class test_method_open_fasta(unittest.TestCase):
 
     def test_normal(self):
         file_name = 'spirulina_ribosome.fasta.txt'
-        text = 'ccgccgtagattt'
+        text = 'CCGCCTAATAT'
         fasta.make_sample_fasta(file_name, text)
 
         val = fasta.open_fasta(file_name)
         self.assertEqual(val, text)
 
+    def test_white_space(self):
+        file_name = 's.fasta.txt'
+        text = 'CATCGTTTTTT '
+        fasta.make_sample_fasta(file_name, text)
+
+        val = fasta.open_fasta(file_name)
+        self.assertEqual(val, text[:-1])
+
 
 class test_method_make_sample_fasta(unittest.TestCase):
     def test_wrong_name(self):
         file_name = None
-        text = 'cgtt'
+        text = 'CGTT'
         with self.assertRaises(TypeError):
             fasta.make_sample_fasta(file_name, text)
 
@@ -67,13 +76,13 @@ class test_method_make_sample_fasta(unittest.TestCase):
 
     def test_not_fasta(self):
         file_name = 'spirulina'
-        text = 'cgta'
+        text = 'CGTA'
         with self.assertRaises(ValueError):
             fasta.make_sample_fasta(file_name, text)
 
     def test_normal(self):
         file_name = 'spirulina_ribosome.fasta.txt'
-        text = 'cgtgatcgatcgttactac'
+        text = 'GCTATCTATCAGCAT'
 
         fasta.make_sample_fasta(file_name, text)
 
@@ -118,13 +127,13 @@ class test_method_convert_to_text(unittest.TestCase):
 
 class test_method_is_gen(unittest.TestCase):
     def test_not(self):
-        gen = 'gctgd'
-        val = match_loc.is_gen(gen)
+        gen = 'GCTGd'
+        val = trie_methods.is_gen(gen)
         self.assertFalse(val)
 
     def test_is(self):
-        gen = 'gtcaaaaa'
-        val = match_loc.is_gen(gen)
+        gen = 'GTCAAAAA'
+        val = trie_methods.is_gen(gen)
         self.assertTrue(val)
 
 if __name__ == '__main__':

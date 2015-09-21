@@ -10,7 +10,7 @@ def is_gen(s):
     if not isinstance(s, str):
         raise TypeError('ERROR: is_gen requires a string.')
     else:
-        gen = {'a', 'g', 't', 'c'}
+        gen = {'A', 'G', 'T', 'C'}
         for c in s:
             if c not in gen:
                 return False

@@ -27,6 +27,8 @@ def open_fasta(file_name):
         lines = f.readlines()
         f.close()
         lines = lines[1:]
+        for index, line in enumerate(lines):
+            lines[index] = line.rstrip()
         text = "".join(lines)
         return text
 
@@ -70,7 +72,7 @@ def convert_to_text(i):
 
 def is_gen(gen):
     for sym in gen:
-        if sym not in ('a', 'c', 'g', 't'):
+        if sym not in ('A', 'C', 'G', 'T'):
             return False
     else:
         return True
